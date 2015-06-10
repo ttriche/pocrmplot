@@ -1,11 +1,8 @@
 # pocrmplot
 fussing with PO-CRM and plotting the actual dose escalation path (AACR workshop)
   
-proposed arms (see plot.R and diagram.R for code):
-![Arm 1](arm1.png)  
-![Arm 2](arm2.png)  
-![Arm 3](arm3.png)  
-![Arm 4](arm4.png)   
+Initially proposed arms (see plot.R and diagram.R for code):
+![Arms](arms.png)
 
 setup for PO-CRM with our initial dose escalation plan (probably not optimal):
 
@@ -14,12 +11,12 @@ library(pocrm)
 library(DiagrammeR)
 
 ## for POCRM 
-doses <- list(crizotinib=paste0("2x", c(25, 37.5, 50), "mg Xalkori"),
-              sunitinib=paste0(c(200, 250), "mg Sutent"))
+doses <- list(sunitinib=paste0("2x", c(25, 37.5, 50), "mg Sutent"),
+              crizotinib=paste0(c(200, 250), "mg Xalkori"))
 
 ## this is essentially a WAG, which is WHY POCRM makes sense (updating)
-doseTox <- list(crizotinib=c(0.1, 0.2, 0.3),
-                sunitinib=c(0.1, 0.3))
+doseTox <- list(crizotinib=c(0.15, 0.3),
+                sunitinib=c(0.1, 0.2, 0.3))
 toxGuess <- apply(expand.grid(doseTox), 1,
                   function(x) 1 - (1 - x[1]) * (1 - x[2]))
 schedules <- apply(expand.grid(doses), 1, function(x) paste(x, collapse=" + "))
