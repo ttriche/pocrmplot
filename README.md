@@ -44,5 +44,6 @@ image(x=1:4, y=1:4, z=t(alpha),
       xlab="Dose", ylab="Arm",
       col=c("darkgreen","green","yellow","orange","red"))
 ```
+![Toxicity working model](toxPlot.png)
 
-(add plot here)
+
