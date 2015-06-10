@@ -1,7 +1,7 @@
 # pocrmplot
 fussing with PO-CRM and plotting the actual dose escalation path (AACR workshop)
   
-proposed arms (see plot.R and diagram.R for code):
+proposed arms (see plot.R and diagram.R for code; note the path plots may be wrong):
 ![Arm 1](arm1.png)  
 ![Arm 2](arm2.png)  
 ![Arm 3](arm3.png)  
