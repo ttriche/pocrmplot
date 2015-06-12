@@ -107,5 +107,5 @@ PI <- toxGuess * 0.67 ## assume the top dose actually produces pTox ~ 0.35
 prior <- toxGuess
 target <- 0.3 
 x0 <- 1
-sims <- crmsim(PI, prior, target, 27, x0, nsim=100)
+sims <- crmsim(PI, prior, target, 30, x0, nsim=100)
 ```
