@@ -1,6 +1,6 @@
 # pocrmplot
 fussing with PO-CRM and plotting the actual dose escalation path (AACR workshop)
-  
+ 
 setup for PO-CRM with our initial dose escalation plan (probably not optimal):
 
 ```R 
@@ -59,29 +59,14 @@ grViz(viz)
 
 ![Arms](arms.png)  
 
-Why PO-CRM?  When we go through the exercise of generating guesses for toxicity, it turns out our hypothetical partial ordering for 3+3 dose escalations by toxicity wasn't exactly correct:
+Why CRM?  When we generate guesses for toxicity, it turns out our hypothetical partial ordering for 3+3 dose escalations by toxicity wasn't exactly correct:
 
 ```R
 ## initial working model 
 alpha <- do.call(rbind, lapply(paths, function(x) toxGuess[x]))
 colnames(alpha) <- paste0("toxAtDose", 1:4)
-## note that the partial ordering here is different than we thought, in `paths`!
 
-## get priors for pocrm assignment:
-prior.o <- rep(1, length(paths)) / length(paths)
-
-## seed the RNG:
-set.seed(123456)
-
-## get skeleton of updates to model
-combos <- sort(ceiling(runif(10)*6))
-
-## get simulated toxicities
-tox <- rbinom(length(combos), 1, toxGuess[combos])
-fit <- pocrm.imp(alpha, prior.o, theta=0.3, y=tox, combos)
-
-# 
-# so instead of fixed random escalation/assignment, rely on PO-CRM to guide dose
+# so instead of fixed random escalation/assignment, rely on CRM to guide dose
 # why? because our original idea wasn't so great, if my model is reasonable.
 # plot the alpha matrix:
 #
@@ -93,4 +78,34 @@ image(x=1:4, y=1:4, z=t(alpha),
 ```
 ![Toxicity working model](toxPlot.png)
 
+```R
+finalpath <- c(1,2,3,4,5,6)
+library(DiagrammeR)
+source("plotPath.R")
+viz2 <- "
+  digraph paths {
 
+    # graph attributes
+    graph [overlap = true]
+
+    # node attributes
+    node [shape = box, fontname = Helvetica, color = blue]
+
+    # edge attributes
+    edge [color = gray]"
+viz2 <- paste(viz2, plotPath(finalpath, schedules), "  }\n", sep="\n")
+grViz(viz2)
+
+```
+
+So:
+1) There is actually a natural dose ordering after all, and 
+2) CRM can be simulated to find the expected enrollment required.  
+
+```R 
+PI <- toxGuess * 0.67 ## assume the top dose actually produces pTox ~ 0.35
+prior <- toxGuess
+target <- 0.3 
+x0 <- 1
+sims <- crmsim(PI, prior, target, 27, x0, nsim=100)
+```
