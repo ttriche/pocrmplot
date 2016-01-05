@@ -1,7 +1,7 @@
 # pocrmplot
-fussing with PO-CRM and plotting the actual dose escalation path (AACR workshop)
+fussing with [PO-CRM](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3947103/) and plotting the actual dose escalation path (AACR workshop).  Read the link, you might learn something -- I certainly did.  Many competing techniques exist for individually or jointly modeling efficacy and toxicity in clinical trials of drug combinations, and it is an active area of research.  Of course the fuddy-duddies at the FDA probably won't listen to anything except "3+3!" until their wife dies.
  
-setup for PO-CRM with our initial dose escalation plan (probably not optimal):
+Anyways. Here's the setup for PO-CRM with our initial dose escalation plan (probably not optimal):
 
 ```R 
 library(pocrm)
