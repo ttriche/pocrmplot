@@ -99,8 +99,8 @@ grViz(viz2)
 ```
 
 So:
-1) There is actually a natural dose ordering after all, and 
-2) CRM can be simulated to find the expected enrollment required.  
+- There is actually a natural dose ordering after all, and 
+- CRM can be simulated to find the expected enrollment required.  
 
 ```R 
 PI <- toxGuess * 0.67 ## assume the top dose actually produces pTox ~ 0.35
