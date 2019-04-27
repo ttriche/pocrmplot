@@ -1,5 +1,5 @@
 # pocrmplot
-fussing with [PO-CRM](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3947103/) and plotting the actual dose escalation path (AACR workshop).  Read the link, you might learn something -- I certainly did.  Many competing techniques exist for individually or jointly modeling efficacy and toxicity in clinical trials of drug combinations, and it is an active area of research.  Of course the fuddy-duddies at the FDA probably won't listen to anything except "3+3!" but I'm told this is changing, and the change is totally unrelated to loved ones of the bureaucrats slowly and painfully dying from the same horrible diseases that everyone else's loved ones die from.  Anyways...
+fussing with [PO-CRM](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3947103/) and plotting the actual dose escalation path (AACR workshop).  Read the link, you might learn something -- I certainly did.  Many competing techniques exist for individually or jointly modeling efficacy and toxicity in clinical trials of drug combinations, and it is an active area of research.  Of course the received wisdom is that fuddy-duddies at the FDA probably won't listen to anything except "3+3!" but it's hard to make any progress if you give up before the whistle. Anyways...
 
 Here's the setup for PO-CRM with our initial dose escalation plan (probably not optimal):
 
